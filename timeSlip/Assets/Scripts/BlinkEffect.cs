@@ -5,16 +5,14 @@ using System.Collections;
 public class BlinkEffect : MonoBehaviour
 {
     public Image blinkImage;              // 화면 덮는 검은 이미지
-    public float blinkDuration = 0.2f;    // 감았다 뜨는 속도
-    public int blinkCount = 3;            // 눈 깜빡 횟수
+    public float blinkDuration = 1f;    // 감고 뜨는 속도 (0.5초)
+    public int blinkCount = 2;            // 깜빡임 횟수
 
     void Start()
     {
-        // 눈 감은 상태(화면 검정)로 시작
         if (blinkImage != null)
-            blinkImage.color = new Color(0, 0, 0, 1f);  // 알파 1 = 불투명
+            blinkImage.color = new Color(0, 0, 0, 1f);  // 시작은 눈 감은 상태
 
-        // 시작하자마자 자동으로 3번 깜빡임 실행
         BlinkMultiple();
     }
 
@@ -52,7 +50,7 @@ public class BlinkEffect : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
 
-        // 마지막 눈 뜨기 (1 → 0)
+        // 마지막 눈 뜨기
         float finalT = 0f;
         while (finalT < blinkDuration)
         {
@@ -61,6 +59,6 @@ public class BlinkEffect : MonoBehaviour
             finalT += Time.deltaTime;
             yield return null;
         }
-        blinkImage.color = new Color(0, 0, 0, 0f); // 눈 완전히 뜬 상태 유지
+        blinkImage.color = new Color(0, 0, 0, 0f);
     }
 }
