@@ -4,8 +4,8 @@ public class NeonPulse : MonoBehaviour
 {
     public Material neonMaterial;               // 머티리얼
     public Color glowColor = Color.yellow;      // 발광 색상
-    public float minIntensity = 0.05f;           // 가장 어두운 상태
-    public float maxIntensity = 1.5f;           // 가장 밝은 상태
+    public float minIntensity = 0.5f;           // 가장 어두운 상태
+    public float maxIntensity = 2f;           // 가장 밝은 상태
     public float pulseSpeed = 2f;             // 숨쉬는 속도 (낮을수록 느림)
 
     private float time;
