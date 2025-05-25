@@ -5,6 +5,7 @@ public class TriggerCharacterSpawn : MonoBehaviour
     public GameObject newCharacter;      // 등장할 인물
     public Transform startPosition;      // 인물이 나타날 위치
     public float delay = 3f;
+    public Animator doorAnimator;//문 애니메이션 실행 여부
 
     private bool triggered = false;
 
@@ -14,13 +15,17 @@ public class TriggerCharacterSpawn : MonoBehaviour
         {
             triggered = true;
 
+            // 문 열기 : Open 파라미터를 true로 설정
+            doorAnimator.SetBool("Open", true);
+             Invoke("SpawnCharacter", delay);
+
             Debug.Log("[TriggerCharacterSpawn] 플레이어가 트리거 존에 들어왔습니다. " +
                       $"3초 후 '{newCharacter.name}'이 등장합니다.");
 
             Invoke("SpawnCharacter", delay);
         }
     }
-
+ 
     void SpawnCharacter()
     {
         newCharacter.SetActive(true);
