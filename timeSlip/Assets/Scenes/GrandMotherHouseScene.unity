@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcff559b35e84714385980d4b32f74bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: FactoryScene
+  sceneName: SewingMachineWorkScene
 --- !u!114 &30290545
 MonoBehaviour:
   m_ObjectHideFlags: 0
