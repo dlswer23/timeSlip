@@ -23,6 +23,7 @@ public class EyeBlinkWakeup : MonoBehaviour
     {
         for (int i = 0; i < blinkCount; i++)
         {
+            Debug.Log("Blink Started!"); // Ãß°¡
             // ´« ¶ß±â
             yield return StartCoroutine(FadeToAlpha(0f));
             yield return new WaitForSeconds(holdOpenTime);
