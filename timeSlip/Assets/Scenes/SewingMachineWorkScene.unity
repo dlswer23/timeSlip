@@ -2228,7 +2228,7 @@ MonoBehaviour:
   blinkDuration: 0.6
   holdClosedTime: 0.2
   holdOpenTime: 0.3
-  blinkCount: 5
+  blinkCount: 3
 --- !u!4 &1116482267
 Transform:
   m_ObjectHideFlags: 0
