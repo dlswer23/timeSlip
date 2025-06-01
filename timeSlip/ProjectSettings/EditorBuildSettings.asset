@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/FactoryScene.unity
     guid: a58725e902eda7a48be7a6635401ef8d
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/GrandMotherHouseScene.unity
     guid: 08c40b950d0180c4e8cb76f68aaedc1f
   - enabled: 1

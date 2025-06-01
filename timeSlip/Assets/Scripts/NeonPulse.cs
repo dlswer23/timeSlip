@@ -1,23 +1,35 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class NeonPulse : MonoBehaviour
 {
-    public Material neonMaterial;               // ¸ÓÆ¼¸®¾ó
-    public Color glowColor = Color.yellow;      // ¹ß±¤ »ö»ó
-    public float minIntensity = 0.5f;           // °¡Àå ¾îµÎ¿î »óÅÂ
-    public float maxIntensity = 2f;           // °¡Àå ¹àÀº »óÅÂ
-    public float pulseSpeed = 2f;             // ¼û½¬´Â ¼Óµµ (³·À»¼ö·Ï ´À¸²)
+    public Material neonMaterial;               // Inspector ì—°ê²°
+    public Color glowColor = Color.yellow;
+    public float minIntensity = 0.5f;
+    public float maxIntensity = 2f;
+    public float pulseSpeed = 2f;
 
     private float time;
+    private Material instanceMaterial;
+
+    void Start()
+    {
+        // 1. ê°œë³„ ì¸ìŠ¤í„´ìŠ¤ ë³µì œ
+        instanceMaterial = new Material(neonMaterial);
+
+        // 2. Emission í‚¤ì›Œë“œ í™œì„±í™”
+        instanceMaterial.EnableKeyword("_EMISSION");
+
+        // 3. ë¨¸í‹°ë¦¬ì–¼ ì ìš©
+        GetComponent<MeshRenderer>().material = instanceMaterial;
+
+        // 4. neonMaterialë„ ì¸ìŠ¤í„´ìŠ¤ë¡œ ì¹˜í™˜ (ì•ˆì •ì„±â†‘)
+        neonMaterial = instanceMaterial;
+    }
 
     void Update()
     {
         time += Time.deltaTime * pulseSpeed;
-
-        // ¼û½¬´Â µíÇÑ Intensity °ª ¸¸µé±â (sin °î¼± È°¿ë)
         float intensity = Mathf.Lerp(minIntensity, maxIntensity, (Mathf.Sin(time) + 1f) / 2f);
-
-        // EmissionColor °»½Å (»ö * °­µµ)
         neonMaterial.SetColor("_EmissionColor", glowColor * intensity);
     }
 }
