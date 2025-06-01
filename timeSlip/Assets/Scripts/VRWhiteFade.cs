@@ -4,13 +4,15 @@ using UnityEngine.SceneManagement;
 
 public class VRWhiteFade : MonoBehaviour
 {
-    public Material fadeMaterial;             // 머티리얼 (URP/Unlit + Transparent)
-    public float fadeDuration = 2.5f;         // 서서히 덮이는 시간
+    public Material fadeMaterial;                // Fade용 머티리얼 (URP/Unlit + Transparent)
+    public float fadeDuration = 2.5f;            // 페이드 연출 지속 시간
     public string sceneToLoad = "SewingMachineWorkScene"; // 전환할 씬 이름
+    public AudioSource bgmSource;                // 🎵 배경음 AudioSource
+    public float bgmFadeDuration = 2f;           // 배경음 페이드아웃 시간
 
     void Start()
     {
-        // ✅ 실행 시작 시 알파값을 0으로 초기화 (투명)
+        // 실행 시작 시 알파값을 0으로 초기화 (투명하게 시작)
         if (fadeMaterial != null)
         {
             fadeMaterial.SetColor("_BaseColor", new Color(1, 1, 1, 0));
@@ -27,6 +29,13 @@ public class VRWhiteFade : MonoBehaviour
     {
         float t = 0f;
 
+        // 🎧 BGM 페이드아웃 시작
+        if (bgmSource != null && bgmSource.isPlaying)
+        {
+            StartCoroutine(FadeOutBGM());
+        }
+
+        // 🎬 화면 화이트 페이드
         while (t < fadeDuration)
         {
             t += Time.deltaTime;
@@ -34,7 +43,6 @@ public class VRWhiteFade : MonoBehaviour
 
             if (fadeMaterial != null)
             {
-                // 흰색 + 알파로 머티리얼 갱신
                 fadeMaterial.SetColor("_BaseColor", new Color(1, 1, 1, alpha));
             }
 
@@ -43,5 +51,20 @@ public class VRWhiteFade : MonoBehaviour
 
         Debug.Log("🚪 씬 전환 → " + sceneToLoad);
         SceneManager.LoadScene(sceneToLoad);
+    }
+
+    private IEnumerator FadeOutBGM()
+    {
+        float startVolume = bgmSource.volume;
+        float t = 0f;
+
+        while (t < bgmFadeDuration)
+        {
+            t += Time.deltaTime;
+            bgmSource.volume = Mathf.Lerp(startVolume, 0f, t / bgmFadeDuration);
+            yield return null;
+        }
+
+        bgmSource.Stop();
     }
 }
