@@ -4,19 +4,48 @@ using UnityEngine.SceneManagement;
 
 public class VRWhiteFade : MonoBehaviour
 {
-    public Material fadeMaterial;                // Fade용 머티리얼 (URP/Unlit + Transparent)
-    public float fadeDuration = 2.5f;            // 페이드 연출 지속 시간
-    public string sceneToLoad = "SewingMachineWorkScene"; // 전환할 씬 이름
-    public AudioSource bgmSource;                // 🎵 배경음 AudioSource
-    public float bgmFadeDuration = 2f;           // 배경음 페이드아웃 시간
+    public Material fadeMaterial;
+    public float fadeDuration = 2.5f;
+    public string sceneToLoad = "SewingMachineWorkScene";
+
+    public AudioSource bgmSourceMain;      // 처음부터 재생
+    public AudioSource bgmSourceDelayed;   // 7초 후 등장 (페이드인)
+    public float bgmFadeDuration = 2f;
 
     void Start()
     {
-        // 실행 시작 시 알파값을 0으로 초기화 (투명하게 시작)
+        // 시작 시 투명한 흰색 설정
         if (fadeMaterial != null)
-        {
             fadeMaterial.SetColor("_BaseColor", new Color(1, 1, 1, 0));
+
+        // BGM2 → 7초 후 페이드인 호출
+        if (bgmSourceDelayed != null)
+        {
+            bgmSourceDelayed.volume = 0f; // 시작은 무음
+            Invoke("FadeInDelayedBGM", 7f);
         }
+    }
+
+    void FadeInDelayedBGM()
+    {
+        Debug.Log("🎵 BGM2 페이드인 시작");
+        bgmSourceDelayed.Play();
+        StartCoroutine(FadeInBGM(bgmSourceDelayed, 1f, 2f)); // 목표 볼륨 1, 2초 동안 페이드인
+    }
+
+    private IEnumerator FadeInBGM(AudioSource source, float targetVolume, float duration)
+    {
+        float t = 0f;
+        float startVolume = source.volume;
+
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            source.volume = Mathf.Lerp(startVolume, targetVolume, t / duration);
+            yield return null;
+        }
+
+        source.volume = targetVolume;
     }
 
     public void StartWhiteFade()
@@ -29,22 +58,20 @@ public class VRWhiteFade : MonoBehaviour
     {
         float t = 0f;
 
-        // 🎧 BGM 페이드아웃 시작
-        if (bgmSource != null && bgmSource.isPlaying)
-        {
-            StartCoroutine(FadeOutBGM());
-        }
+        // 🎧 둘 다 페이드아웃
+        if (bgmSourceMain != null && bgmSourceMain.isPlaying)
+            StartCoroutine(FadeOutBGM(bgmSourceMain));
 
-        // 🎬 화면 화이트 페이드
+        if (bgmSourceDelayed != null && bgmSourceDelayed.isPlaying)
+            StartCoroutine(FadeOutBGM(bgmSourceDelayed));
+
         while (t < fadeDuration)
         {
             t += Time.deltaTime;
             float alpha = Mathf.SmoothStep(0f, 1f, t / fadeDuration);
 
             if (fadeMaterial != null)
-            {
                 fadeMaterial.SetColor("_BaseColor", new Color(1, 1, 1, alpha));
-            }
 
             yield return null;
         }
@@ -53,18 +80,18 @@ public class VRWhiteFade : MonoBehaviour
         SceneManager.LoadScene(sceneToLoad);
     }
 
-    private IEnumerator FadeOutBGM()
+    private IEnumerator FadeOutBGM(AudioSource source)
     {
-        float startVolume = bgmSource.volume;
         float t = 0f;
+        float startVolume = source.volume;
 
         while (t < bgmFadeDuration)
         {
             t += Time.deltaTime;
-            bgmSource.volume = Mathf.Lerp(startVolume, 0f, t / bgmFadeDuration);
+            source.volume = Mathf.Lerp(startVolume, 0f, t / bgmFadeDuration);
             yield return null;
         }
 
-        bgmSource.Stop();
+        source.Stop();
     }
 }
