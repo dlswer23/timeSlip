@@ -2162,10 +2162,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 47f392d29c514724e9419110abcbc0d2,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1192943296}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 47f392d29c514724e9419110abcbc0d2,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1192943297}
   m_SourcePrefab: {fileID: 100100000, guid: 47f392d29c514724e9419110abcbc0d2, type: 3}
 --- !u!1 &1192943295 stripped
@@ -2174,27 +2170,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1192943294}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1192943296
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1192943295}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: dee25047523010c4287774b5e69db2c6, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!82 &1192943297
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2207,9 +2182,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 75df39be96803204b9d50e147280ee65, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -3372,10 +3347,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 47f392d29c514724e9419110abcbc0d2,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1707979787}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 47f392d29c514724e9419110abcbc0d2,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1707979786}
   m_SourcePrefab: {fileID: 100100000, guid: 47f392d29c514724e9419110abcbc0d2, type: 3}
 --- !u!1 &1707979785 stripped
@@ -3396,9 +3367,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 75df39be96803204b9d50e147280ee65, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -3480,27 +3451,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!95 &1707979787
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1707979785}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: dee25047523010c4287774b5e69db2c6, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1711681355
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4370,10 +4320,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 47f392d29c514724e9419110abcbc0d2,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1767847252}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 47f392d29c514724e9419110abcbc0d2,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1767847253}
   m_SourcePrefab: {fileID: 100100000, guid: 47f392d29c514724e9419110abcbc0d2, type: 3}
 --- !u!1 &1767847251 stripped
@@ -4382,27 +4328,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1767847250}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1767847252
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1767847251}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: dee25047523010c4287774b5e69db2c6, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!82 &1767847253
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4415,9 +4340,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 75df39be96803204b9d50e147280ee65, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -4644,10 +4569,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 47f392d29c514724e9419110abcbc0d2,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1794955263}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 47f392d29c514724e9419110abcbc0d2,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1794955262}
   m_SourcePrefab: {fileID: 100100000, guid: 47f392d29c514724e9419110abcbc0d2, type: 3}
 --- !u!1 &1794955261 stripped
@@ -4668,9 +4589,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 75df39be96803204b9d50e147280ee65, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -4752,27 +4673,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!95 &1794955263
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1794955261}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: dee25047523010c4287774b5e69db2c6, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1803329963
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5833,10 +5733,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 47f392d29c514724e9419110abcbc0d2,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1909188307}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 47f392d29c514724e9419110abcbc0d2,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1909188308}
   m_SourcePrefab: {fileID: 100100000, guid: 47f392d29c514724e9419110abcbc0d2, type: 3}
 --- !u!1 &1909188306 stripped
@@ -5845,27 +5741,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1909188305}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1909188307
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1909188306}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: dee25047523010c4287774b5e69db2c6, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!82 &1909188308
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5878,9 +5753,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 75df39be96803204b9d50e147280ee65, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
