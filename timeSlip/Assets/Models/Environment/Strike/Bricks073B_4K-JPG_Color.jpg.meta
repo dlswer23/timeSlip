@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 149e02fb368dcab4ea2cd746a51cbc03
+=======
+guid: cf3744e34e737ca449b2a7dcdc8b7dd5
+>>>>>>> origin/feature/sejin
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
