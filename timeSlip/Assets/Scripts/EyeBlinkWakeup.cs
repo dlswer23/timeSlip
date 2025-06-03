@@ -7,7 +7,7 @@ public class EyeBlinkWakeup : MonoBehaviour
     public float blinkDuration = 0.6f;    // °¨±â/¶ß±â ¼Óµµ
     public float holdClosedTime = 0.2f;   // ´« °¨Àº »óÅÂ À¯Áö ½Ã°£
     public float holdOpenTime = 0.3f;     // ´« ¶á »óÅÂ À¯Áö ½Ã°£ (±ôºı »çÀÌ)
-    public int blinkCount = 2;            // ±ôºı È½¼ö (2È¸)
+    public int blinkCount = 3;            // ±ôºı È½¼ö (2È¸)
 
     void Start()
     {
