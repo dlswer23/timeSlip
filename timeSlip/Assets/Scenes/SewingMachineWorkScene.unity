@@ -494,6 +494,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 909de6a7e6fad5242a1977112ddf433e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossToMove: {fileID: 2026544209}
+  targetPosition: {x: 0, y: 0, z: 0}
+  moveSpeed: 2
+  smoothTime: 0.6
+  delayBeforeMove: 5
+  delayBeforeReturn: 10
+  doorController: {fileID: 499815074}
 --- !u!1001 &99551366
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1292,6 +1299,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ff6dc0d61e170e4cb1785fae79a6631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorPivots:
+  - pivot: {fileID: 499815075}
+    openAngle: 120
+  openSpeed: 3
 --- !u!4 &499815075
 Transform:
   m_ObjectHideFlags: 0
@@ -5846,6 +5857,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1954593446}
+  - component: {fileID: 1954593447}
   m_Layer: 0
   m_Name: doorLPivot
   m_TagString: Untagged
@@ -5869,6 +5881,22 @@ Transform:
   - {fileID: 43744507}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1954593447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954593444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ff6dc0d61e170e4cb1785fae79a6631, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorPivots:
+  - pivot: {fileID: 1954593446}
+    openAngle: -120
+  openSpeed: 3
 --- !u!1001 &1995663355
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5992,6 +6020,7 @@ GameObject:
   - component: {fileID: 2026544208}
   - component: {fileID: 2026544207}
   - component: {fileID: 2026544206}
+  - component: {fileID: 2026544210}
   m_Layer: 0
   m_Name: bossMoveTest
   m_TagString: Untagged
@@ -6091,6 +6120,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &2026544210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026544205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 909de6a7e6fad5242a1977112ddf433e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossToMove: {fileID: 2026544209}
+  targetPosition: {x: 0, y: 0, z: 0}
+  moveSpeed: 2
+  smoothTime: 0.6
+  delayBeforeMove: 5
+  delayBeforeReturn: 10
+  doorController: {fileID: 499815074}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
