@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -321,18 +321,26 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             if (m_TeleportInteractor != null)
                 m_TeleportInteractor.gameObject.SetActive(false);
 
-            // Allow the locomotion actions to be refreshed when this is re-enabled.
-            // See comments in Start for why we wait until Start to enable/disable locomotion actions.
             if (m_StartCalled)
                 UpdateLocomotionActions();
 
             SetupInteractorEvents();
 
-            // Start the coroutine that executes code after the Update phase (during yield null).
-            // Since this behavior has an execution order that runs before the XRInteractionManager,
-            // we use the coroutine to run after the selection events
-            StartCoroutine(m_AfterInteractionEventsRoutine);
+            // SmoothTurn 코루틴 실행
+            IEnumerator routine = SmoothTurn();
+            if (routine != null)
+            {
+                StartCoroutine(routine);
+            }
         }
+
+        // ⛔ 아래 함수는 OnEnable() 함수 안이 아니라, 그 밖에 위치해야 합니다!
+        private IEnumerator SmoothTurn()
+        {
+            yield return null;
+            // 추후 회전 로직을 여기에 작성할 수 있음
+        }
+
 
         protected void OnDisable()
         {
@@ -341,7 +349,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             if (m_AfterInteractionEventsRoutine != null)
             {
                 StopCoroutine(m_AfterInteractionEventsRoutine);
-                m_AfterInteractionEventsRoutine = null; // �߰��� null�� �ʱ�ȭ���ָ� ���!
+                m_AfterInteractionEventsRoutine = null; // 추가로 null로 초기화해주면 깔끔!
             }
         }
 
