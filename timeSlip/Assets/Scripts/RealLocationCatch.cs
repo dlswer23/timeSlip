@@ -4,29 +4,20 @@ using UnityEngine;
 
 public class RealLocationCatch : MonoBehaviour
 {
-    [Header("Boss Move Settings")]
-    public Transform bossToMove;
-    public Vector3 targetPosition;
-    public float moveSpeed = 2f;
-    public float smoothTime = 0.6f;
-    public float delayBeforeMove = 5f;       // Hans 움직이기까지 대기 시간
-    public float delayBeforeReturn = 10f;
-
     [Header("Door Settings")]
-    public List<DoorController> doorControllers;  // ✅ 여러 개 문 열기용 리스트
+    public List<DoorController> doorControllers;
 
-    private Vector3 originalPosition;
+    [Header("Animation Settings")]
+    public float delayBeforeWalkAnim = 5f;
+
+    [Header("Target")]
+    public Animator targetAnimator;  // 🎯 Hans의 Animator를 인스펙터에 직접 연결
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            Debug.Log("Player detected!");
-            originalPosition = bossToMove.position;
-
-            // 문 열기와 보스 이동 분리 실행
-            StartCoroutine(HandleSequence());
-        }
+        // 태그 체크 제거 → 누구든 트리거되면 작동
+        Debug.Log("트리거 진입 감지됨");
+        StartCoroutine(HandleSequence());
     }
 
     private IEnumerator HandleSequence()
@@ -37,66 +28,24 @@ public class RealLocationCatch : MonoBehaviour
         {
             if (door != null)
             {
-                Debug.Log("Door opening triggered!");
+                Debug.Log("문 열림!");
                 door.ToggleDoor();
             }
         }
 
-        // 2초 추가 대기 (총 5초 후 Hans 애니메이션 실행)
+        // 2초 추가 대기
         yield return new WaitForSeconds(2f);
 
-        // Hans 애니메이션 트리거 발동
-        Animator animator = bossToMove.GetComponent<Animator>();
-        if (animator != null)
+        // Animator 실행
+        if (targetAnimator != null)
         {
-            Debug.Log("Triggering Hans animation!");
-            animator.SetTrigger("StartWalking");
+            Debug.Log("isWalk = true 설정");
+            targetAnimator.SetBool("isWalk", true);
+            yield return new WaitForSeconds(10f);
         }
-
-        // Hans 이동
-        StartCoroutine(MoveBoss());
-    }
-
-    private IEnumerator MoveBoss()
-    {
-        Vector3 startPosition = bossToMove.position;
-        Vector3 endPosition = targetPosition;
-        float elapsedTime = 0f;
-
-        while (elapsedTime < smoothTime)
+        else
         {
-            elapsedTime += Time.deltaTime;
-            float t = elapsedTime / smoothTime;
-            bossToMove.position = Vector3.Lerp(startPosition, endPosition, t);
-            yield return null;
-        }
-
-        bossToMove.position = endPosition;
-        Debug.Log("Hans arrived at position.");
-
-        yield return new WaitForSeconds(delayBeforeReturn);
-        Debug.Log("Hans returning!");
-
-        elapsedTime = 0f;
-        while (elapsedTime < smoothTime)
-        {
-            elapsedTime += Time.deltaTime;
-            float t = elapsedTime / smoothTime;
-            bossToMove.position = Vector3.Lerp(endPosition, originalPosition, t);
-            yield return null;
-        }
-
-        bossToMove.position = originalPosition;
-        Debug.Log("Hans returned.");
-
-        // 문 닫기
-        foreach (DoorController door in doorControllers)
-        {
-            if (door != null)
-            {
-                Debug.Log("Closing the door!");
-                door.ToggleDoor();
-            }
+            Debug.LogWarning("타겟 Animator가 연결되지 않았습니다!");
         }
     }
 }
