@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: b2d729674a1d7254aac25fb672203f06, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -4184,11 +4184,56 @@ PrefabInstance:
       propertyPath: m_BackGroundColor.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2872782491355821252, guid: 6025318dc14e55f4db651ca4e916e3eb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 01219acc239963a40aa907c2a99c293d, type: 2}
+    - target: {fileID: -2872782491355821252, guid: 6025318dc14e55f4db651ca4e916e3eb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: db66224d5e321d44bb3ab6b03fd6832e, type: 2}
+    - target: {fileID: -2417094610102442147, guid: 6025318dc14e55f4db651ca4e916e3eb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: c7c65b143bcec81478a96e7af9f81cf5, type: 2}
+    - target: {fileID: -211685842793455834, guid: 6025318dc14e55f4db651ca4e916e3eb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8eb7d8a90f2133245aa3244b5a3c374e, type: 2}
+    - target: {fileID: 386612853051071546, guid: 6025318dc14e55f4db651ca4e916e3eb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6915e1e58f0a0b94bb7c3790e94fb317, type: 2}
+    - target: {fileID: 695886216963136113, guid: 6025318dc14e55f4db651ca4e916e3eb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5015df84e8b47594b8259b41fd3a882a, type: 2}
+    - target: {fileID: 722863653814150403, guid: 6025318dc14e55f4db651ca4e916e3eb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: a73ce97174548ff43becf7076bf810d5, type: 2}
     - target: {fileID: 919132149155446097, guid: 6025318dc14e55f4db651ca4e916e3eb,
         type: 3}
       propertyPath: m_Name
       value: factory front
       objectReference: {fileID: 0}
+    - target: {fileID: 4074930247480642136, guid: 6025318dc14e55f4db651ca4e916e3eb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 47c2d740284d61c458bc725d4f321617, type: 2}
+    - target: {fileID: 4998327836567325799, guid: 6025318dc14e55f4db651ca4e916e3eb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4e9d0c37787f479428bdf2ab1220936b, type: 2}
     - target: {fileID: 5892767430136184573, guid: 6025318dc14e55f4db651ca4e916e3eb,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
