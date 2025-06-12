@@ -6,10 +6,10 @@ public class HansMover : MonoBehaviour
     [Header("Hans Settings")]
     public Transform hans;
     public Animator hansAnimator;
-    public float walkSpeed = 1.5f;
+    public float walkSpeed = 5f;
 
     [Header("Destination")]
-    public Vector2 target2DPosition = new Vector2(-3.467f, 2.15f);
+    public Vector2 target2DPosition = new Vector2(-0.217f,-0.04900002f);
     public float arrivalThreshold = 0.1f;
 
     private bool hasArrived = false;
