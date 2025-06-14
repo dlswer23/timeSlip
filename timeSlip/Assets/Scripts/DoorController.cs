@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,10 +15,13 @@ public class DoorController : MonoBehaviour
     [Header("Door Settings")]
     public List<DoorPivotData> doorPivots;
     public float openSpeed = 1f;
-    public float doorOpenDuration = 10f; // ⏱ 문이 열린 상태 유지 시간
+    public float doorOpenDuration = 10f;
 
     [Header("Audio")]
-    public AudioSource doorCloseSound;   // 🎵 문 닫힐 때 효과음
+    public AudioSource doorCloseSound;
+
+    // ✅ 문 닫힌 직후 외부에 알릴 수 있는 이벤트
+    public Action OnDoorFullyClosed;
 
     private bool isOpen = false;
     private bool isMoving = false;
@@ -28,7 +32,7 @@ public class DoorController : MonoBehaviour
         {
             StartCoroutine(RotateDoors());
 
-            // 🔹 문이 열릴 때만 닫기 예약
+            // 문이 열릴 때만 자동 닫기 예약
             if (!isOpen)
             {
                 StartCoroutine(AutoCloseAfterDelay(doorOpenDuration));
@@ -49,13 +53,9 @@ public class DoorController : MonoBehaviour
             Quaternion endRotation;
 
             if (isOpen)
-            {
                 endRotation = startRotation * Quaternion.Euler(0, -doorData.openAngle, 0);
-            }
             else
-            {
                 endRotation = startRotation * Quaternion.Euler(0, doorData.openAngle, 0);
-            }
 
             startRotations.Add(startRotation);
             endRotations.Add(endRotation);
@@ -76,13 +76,13 @@ public class DoorController : MonoBehaviour
             yield return null;
         }
 
-        // 최종 각도 보정
+        // 최종 보정
         for (int i = 0; i < doorPivots.Count; i++)
         {
             doorPivots[i].pivot.rotation = endRotations[i];
         }
 
-        // 🔊 문 닫혔을 때 효과음 재생
+        // 🔊 닫힐 때 효과음
         if (isOpen && doorCloseSound != null)
         {
             doorCloseSound.Play();
@@ -90,6 +90,12 @@ public class DoorController : MonoBehaviour
 
         isOpen = !isOpen;
         isMoving = false;
+
+        // ✅ 문이 '닫힌 직후'에만 콜백 실행
+        if (!isOpen && OnDoorFullyClosed != null)
+        {
+            OnDoorFullyClosed.Invoke();
+        }
     }
 
     private IEnumerator AutoCloseAfterDelay(float delay)
@@ -98,7 +104,7 @@ public class DoorController : MonoBehaviour
 
         if (isOpen && !isMoving)
         {
-            ToggleDoor();  // 닫기 호출
+            ToggleDoor(); // 문 닫기
         }
     }
 }
