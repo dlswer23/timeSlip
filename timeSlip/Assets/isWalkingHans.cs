@@ -1,54 +1,75 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class isWalkingHans : MonoBehaviour
 {
-    public Transform hans;
-    public Animator hansAnimator;
-    public float moveSpeed = 1.5f;
-    public float targetX = 0.127f;
+    public Transform target1;
+    public Transform originPosition;
+    public AudioSource voiceSource;
 
-    public AudioSource voiceAudioSource;  // 🎤 Voice Clip 연결용
+    public float moveSpeed = 1.2f;
 
-    private bool hasArrived = false;
-    private bool voicePlayed = false;
-    private bool turnTriggered = false;
-    private float waitStartTime;
+    private Animator animator;
+    private bool isSequenceStarted = false;
 
-    void Update()
+    void Start()
     {
-        // 1. 이동 처리
-        if (hansAnimator.GetBool("isWalk") && !hasArrived)
+        animator = GetComponent<Animator>();
+        // ❌ StartCoroutine(PlayHansSequence()); // 자동 실행 제거
+    }
+
+    // ✅ 외부에서 호출할 때만 실행됨
+    public void StartHansSequenceExternally()
+    {
+        if (!isSequenceStarted)
         {
-            Vector3 currentPosition = hans.position;
-            Vector3 targetPosition = new Vector3(targetX, currentPosition.y, currentPosition.z);
-            float step = moveSpeed * Time.deltaTime;
+            StartCoroutine(PlayHansSequence());
+        }
+    }
 
-            hans.position = Vector3.MoveTowards(currentPosition, targetPosition, step);
+    IEnumerator PlayHansSequence()
+    {
+        isSequenceStarted = true;
 
-            if (Mathf.Abs(hans.position.x - targetX) < 0.01f)
-            {
-                hasArrived = true;
+        animator.Play("walking");
+        yield return StartCoroutine(MoveToPosition(target1.position));
 
-                // ✅ 걷기 종료, 대기 시작
-                hansAnimator.SetBool("isWalk", false);
-                hansAnimator.SetBool("isWait", true);
-                waitStartTime = Time.time;
+        animator.Play("talking");
+        voiceSource.Play();
+        yield return new WaitUntil(() => !voiceSource.isPlaying);
+        yield return new WaitForSeconds(2f);
 
-                Debug.Log("✅ Hans가 X=0.127 위치에 도착했습니다. 상태 전환 중...");
-            }
+        yield return StartCoroutine(RotateBy(Vector3.up * 180f, 1.2f));
+
+        animator.Play("walking");
+        yield return StartCoroutine(MoveToPosition(originPosition.position));
+
+        animator.Play("idle");
+    }
+
+    IEnumerator MoveToPosition(Vector3 destination)
+    {
+        while (Vector3.Distance(transform.position, destination) > 0.05f)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, destination, moveSpeed * Time.deltaTime);
+            yield return null;
+        }
+    }
+
+    IEnumerator RotateBy(Vector3 angle, float duration)
+    {
+        Quaternion from = transform.rotation;
+        Quaternion to = Quaternion.Euler(transform.eulerAngles + angle);
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            transform.rotation = Quaternion.Slerp(from, to, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
         }
 
-        // 2. 음성 재생 (1회만)
-        if (hasArrived && !voicePlayed &&(hansAnimator.GetBool("isWait") ))
-        {
-            if (voiceAudioSource != null && !voiceAudioSource.isPlaying)
-            {
-                voiceAudioSource.Play();
-                voicePlayed = true;
-                Debug.Log("🎤 Voice 재생 시작");
-                hansAnimator.SetBool("isWait", false);
-           // hansAnimator.SetBool("isTurn", true);
-            }
-        }
+        transform.rotation = to;
     }
 }
