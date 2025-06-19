@@ -6,10 +6,13 @@ public class KiraNarration : MonoBehaviour
     public DoorController doorController;
     public AudioSource kiraAudioSource;
     public AudioClip kiraClip;
-    public float delayBeforeSpeaking = 5f; // ⏱ 5초 후에 말하게 설정
+    public float delayBeforeSpeaking = 5f;
 
-    public Animator kiraAnimator; // 🎞 애니메이터 추가
-    public string animationTriggerName = "Talk"; // 실행할 트리거 이름
+    public Animator kiraAnimator;
+
+    [Header("KiraNarration")]
+    public string animationStateName = "Pointing";       // 애니메이션 클립 이름
+    public string idleStateName = "HumanoidIdle";         // 복귀용 애니메이션 클립 이름
 
     void Start()
     {
@@ -25,17 +28,28 @@ public class KiraNarration : MonoBehaviour
     {
         yield return new WaitForSeconds(delayBeforeSpeaking);
 
+        // 👉 1. 애니메이션 강제 실행 (파라미터 없이)
+        if (kiraAnimator != null && !string.IsNullOrEmpty(animationStateName))
+        {
+            kiraAnimator.Play(animationStateName);
+            Debug.Log($"🕹 애니메이션 '{animationStateName}' 실행");
+        }
+
+        // 👉 2. 오디오 재생
         if (kiraAudioSource != null && kiraClip != null)
         {
-            // 🎞 애니메이션 트리거 실행
-            if (kiraAnimator != null && !string.IsNullOrEmpty(animationTriggerName))
-            {
-                kiraAnimator.SetTrigger(animationTriggerName);
-            }
-
             kiraAudioSource.clip = kiraClip;
             kiraAudioSource.Play();
-            Debug.Log("🎤 5초 후 Kira 오디오 재생 + 애니메이션 실행됨!");
+            Debug.Log("🎤 Kira 오디오 재생됨");
+        }
+
+        // 👉 3. 대사 끝나고 원래 상태로 돌아가기
+        yield return new WaitForSeconds(kiraClip.length);
+
+        if (kiraAnimator != null && !string.IsNullOrEmpty(idleStateName))
+        {
+            kiraAnimator.Play(idleStateName);
+            Debug.Log($"↩ 애니메이션 '{idleStateName}'으로 복귀");
         }
     }
 

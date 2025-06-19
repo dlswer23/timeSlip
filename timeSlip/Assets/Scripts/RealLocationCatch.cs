@@ -13,6 +13,7 @@ public class RealLocationCatch : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+         if (!other.CompareTag("Player")) return;  // ✅ 유저만 허용
         Debug.Log("트리거 진입 감지됨");
     
         StartCoroutine(HandleSequence());
