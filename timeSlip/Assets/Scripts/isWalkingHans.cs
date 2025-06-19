@@ -16,10 +16,8 @@ public class isWalkingHans : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        // ❌ StartCoroutine(PlayHansSequence()); // 자동 실행 제거
     }
 
-    // ✅ 외부에서 호출할 때만 실행됨
     public void StartHansSequenceExternally()
     {
         if (!isSequenceStarted)
@@ -40,7 +38,12 @@ public class isWalkingHans : MonoBehaviour
         yield return new WaitUntil(() => !voiceSource.isPlaying);
         yield return new WaitForSeconds(2f);
 
-        yield return StartCoroutine(RotateBy(Vector3.up * 180f, 1.2f));
+        // 🔄 회전 애니메이션 실행
+        animator.Play("turning");
+        yield return new WaitForSeconds(1.2f);  // turning 애니메이션 실행 (회전 포함됨)
+
+        // ✅ 목적지 바라보게 함 (걷기 애니메이션과 방향 일치)
+        transform.LookAt(originPosition.position);
 
         animator.Play("walking");
         yield return StartCoroutine(MoveToPosition(originPosition.position));
@@ -53,6 +56,19 @@ public class isWalkingHans : MonoBehaviour
         while (Vector3.Distance(transform.position, destination) > 0.05f)
         {
             transform.position = Vector3.MoveTowards(transform.position, destination, moveSpeed * Time.deltaTime);
+            yield return null;
+        }
+    }
+
+    IEnumerator MoveForwardDistance(float distance)
+    {
+        float moved = 0f;
+
+        while (moved < distance)
+        {
+            float step = moveSpeed * Time.deltaTime;
+            transform.position += transform.forward * step;
+            moved += step;
             yield return null;
         }
     }

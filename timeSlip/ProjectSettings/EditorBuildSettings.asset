@@ -24,6 +24,8 @@ EditorBuildSettings:
     path: Assets/Scenes/StrikeScene.unity
     guid: 38c3f97a46ea3c143ae1a39390a9c0f7
   m_configObjects:
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: a060d80143d249845957c49221495d1e,
       type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 1e29484b3fee92847b7d0b9ff3f6f0cd,

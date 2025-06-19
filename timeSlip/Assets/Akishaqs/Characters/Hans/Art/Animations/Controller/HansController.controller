@@ -242,7 +242,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: walking
-  m_Speed: 1
+  m_Speed: 0.85
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -254,7 +254,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 2365dc5c71c181e4dbdadb4fdf85b37a,
+  m_Motion: {fileID: -203655887218126122, guid: 7956abdf359639248a829f1a7e01f767,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -720,7 +720,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 8733e74535d74d34b8326bbe041cc454,
+  m_Motion: {fileID: -203655887218126122, guid: efb2499952db36d4389f9d939fb6e880,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
