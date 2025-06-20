@@ -8,24 +8,25 @@ public class RealLocationCatch : MonoBehaviour
     public List<DoorController> doorControllers;
 
     [Header("Hans Script")]
-    public isWalkingHans hansScript;  // 👈 인스펙터에 Hans GameObject에 붙은 스크립트 연결
+    public isWalkingHans hansScript;
 
+    private bool hasTriggered = false; // 🔒 중복 방지용 플래그
 
     private void OnTriggerEnter(Collider other)
     {
-         if (!other.CompareTag("Player")) return;  // ✅ 유저만 허용
+        if (!other.CompareTag("Player")) return;
+        if (hasTriggered) return; // 🚫 이미 실행됐다면 무시
+
+        hasTriggered = true; // ✅ 실행 상태 기억
         Debug.Log("트리거 진입 감지됨");
-    
+
         StartCoroutine(HandleSequence());
     }
 
-
     private IEnumerator HandleSequence()
     {
-        // 🔹 1. 트리거 진입 후 3초 대기
         yield return new WaitForSeconds(3f);
 
-        // 🔹 2. 문 열기
         foreach (DoorController door in doorControllers)
         {
             if (door != null)
@@ -35,10 +36,8 @@ public class RealLocationCatch : MonoBehaviour
             }
         }
 
-        // 🔹 3. 문을 연 후 3초 추가 대기
         yield return new WaitForSeconds(3f);
 
-        // 🔹 4. Hans 애니메이션 시퀀스 시작
         if (hansScript != null)
         {
             Debug.Log("Hans 애니메이션 실행");
