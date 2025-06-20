@@ -338,11 +338,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         {
             TeardownInteractorEvents();
 
-            if (m_AfterInteractionEventsRoutine != null)
-            {
-                StopCoroutine(m_AfterInteractionEventsRoutine);
-                m_AfterInteractionEventsRoutine = null; // 추가로 null로 초기화해주면 깔끔!
-            }
+            StopCoroutine(m_AfterInteractionEventsRoutine);
         }
 
         protected void Start()
