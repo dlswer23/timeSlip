@@ -10008,7 +10008,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 1731298977}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -10139,17 +10139,17 @@ PrefabInstance:
     - target: {fileID: 1224186131835539537, guid: 3ad033176ca6e3b45b6936892f64a9e6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.461
+      value: -0.7561
       objectReference: {fileID: 0}
     - target: {fileID: 1224186131835539537, guid: 3ad033176ca6e3b45b6936892f64a9e6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0427
+      value: 0.065
       objectReference: {fileID: 0}
     - target: {fileID: 1224186131835539537, guid: 3ad033176ca6e3b45b6936892f64a9e6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.3909
+      value: 0.813
       objectReference: {fileID: 0}
     - target: {fileID: 1997063179996498667, guid: 3ad033176ca6e3b45b6936892f64a9e6,
         type: 3}
@@ -11856,8 +11856,8 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_Intensity: 0
+  m_Color: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 1}
+  m_Intensity: 0.6
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -13543,6 +13543,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 344119061}
     m_Modifications:
+    - target: {fileID: 306423734865422085, guid: beb4e2871579447497fe41dfb108e2cd,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 330886657312036611, guid: c9fe6bcf472f49c4297788b02d19b814,
+        type: 3}
     - target: {fileID: 4266640295717640279, guid: beb4e2871579447497fe41dfb108e2cd,
         type: 3}
       propertyPath: m_Name
