@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class KiraNarration : MonoBehaviour
@@ -8,6 +7,9 @@ public class KiraNarration : MonoBehaviour
     public AudioSource kiraAudioSource;
     public AudioClip kiraClip;
     public float delayBeforeSpeaking = 5f;
+
+    [Header("External Control")]
+    public bool isLet = false;
 
     public Animator kiraAnimator;
 
@@ -18,14 +20,19 @@ public class KiraNarration : MonoBehaviour
     [Header("Floating Effect Target")]
     public FloatingEffect floatingTarget;
 
-    [Header("Breathing Emission Targets")] // ✅ 여러 개 등록 가능
-    public List<SharedMaterialBreathingEmission> emissionTargets;
+    [Header("Optional Emission Effects")]
+    public SharedMaterialBreathingEmission[] breathingEmissionTargets;
 
-    public bool isLet = false;
+    [Header("Rotation Settings")]
+    public float rotationOffsetY = -30f; // 말할 때 회전 각도
+    public float rotationDuration = 0.8f;
+
+    private Quaternion originalRotation;
 
     void Start()
     {
-        doorController.OnDoorFullyClosed += OnDoorClosed;
+        if (doorController != null)
+            doorController.OnDoorFullyClosed += OnDoorClosed;
     }
 
     void OnDestroy()
@@ -43,11 +50,21 @@ public class KiraNarration : MonoBehaviour
     {
         yield return new WaitForSeconds(delayBeforeSpeaking);
 
-        // 👉 애니메이션 실행
+        // 👉 원래 회전 저장
+        originalRotation = transform.rotation;
+
+        // 👉 타겟 회전 계산
+        float newY = transform.eulerAngles.y + rotationOffsetY;
+        Quaternion targetRotation = Quaternion.Euler(transform.eulerAngles.x, newY, transform.eulerAngles.z);
+
+        // 👉 부드러운 회전
+        yield return StartCoroutine(SmoothRotate(transform.rotation, targetRotation, rotationDuration));
+
+        // 🎞 애니메이션 실행
         if (kiraAnimator != null && !string.IsNullOrEmpty(animationStateName))
             kiraAnimator.Play(animationStateName);
 
-        // 👉 오디오 재생
+        // 🎤 오디오 재생
         if (kiraAudioSource != null && kiraClip != null)
         {
             kiraAudioSource.clip = kiraClip;
@@ -56,27 +73,39 @@ public class KiraNarration : MonoBehaviour
 
         yield return new WaitForSeconds(kiraClip.length);
 
-        // 👉 애니메이션 복귀
+        // ↩ 원래 방향으로 회전 복귀
+        yield return StartCoroutine(SmoothRotate(transform.rotation, originalRotation, rotationDuration));
+
+        // 😌 애니메이션 복귀
         if (kiraAnimator != null && !string.IsNullOrEmpty(idleStateName))
             kiraAnimator.Play(idleStateName);
 
-        // ✅ Emission 효과들 전체 실행
-        if (isLet && emissionTargets != null)
+        // ✨ 외부 연계 효과 실행 (isLet 체크)
+        if (isLet)
         {
-            foreach (var target in emissionTargets)
+            if (floatingTarget != null)
+                floatingTarget.enabled = true;
+
+            if (breathingEmissionTargets != null)
             {
-                if (target != null)
+                foreach (var effect in breathingEmissionTargets)
                 {
-                    target.isLet = true;
-                    Debug.Log($"✨ Emission 활성화: {target.name}");
+                    if (effect != null)
+                        effect.isLet = true;
                 }
             }
         }
+    }
 
-        // ✅ FloatingEffect도 같이 실행
-        if (isLet && floatingTarget != null)
+    private IEnumerator SmoothRotate(Quaternion from, Quaternion to, float duration)
+    {
+        float elapsed = 0f;
+        while (elapsed < duration)
         {
-            floatingTarget.enabled = true;
+            transform.rotation = Quaternion.Slerp(from, to, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
         }
+        transform.rotation = to;
     }
 }

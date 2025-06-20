@@ -1128,7 +1128,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &74932075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1136,7 +1136,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 74932074}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
   m_Name: 
@@ -5324,17 +5324,19 @@ MonoBehaviour:
   doorController: {fileID: 1954593447}
   kiraAudioSource: {fileID: 662733809}
   kiraClip: {fileID: 8300000, guid: 1826aa90458d1414290e994a99b4d011, type: 3}
-  delayBeforeSpeaking: 14
+  delayBeforeSpeaking: 10.2
+  isLet: 1
   kiraAnimator: {fileID: 662733806}
   animationStateName: Pointing
   idleStateName: HumanoidIdle
   floatingTarget: {fileID: 1525054519}
-  emissionTargets:
-  - {fileID: 1582325670}
-  - {fileID: 1352123628}
-  - {fileID: 160618764}
+  breathingEmissionTargets:
   - {fileID: 1197670802}
-  isLet: 1
+  - {fileID: 160618764}
+  - {fileID: 1352123628}
+  - {fileID: 1582325670}
+  rotationOffsetY: -30
+  rotationDuration: 0.8
 --- !u!114 &662733812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5350,13 +5352,20 @@ MonoBehaviour:
   doorController: {fileID: 1954593447}
   kiraAudioSource: {fileID: 662733809}
   kiraClip: {fileID: 8300000, guid: 576be5812e4e0ea4e9c94a08d1530bb0, type: 3}
-  delayBeforeSpeaking: 25
+  delayBeforeSpeaking: 20
+  isLet: 0
   kiraAnimator: {fileID: 662733806}
   animationStateName: Pointing
   idleStateName: HumanoidIdle
-  floatingTarget: {fileID: 0}
-  emissionTargets: []
-  isLet: 0
+  floatingTarget: {fileID: 1525054519}
+  breathingEmissionTargets:
+  - {fileID: 1582325670}
+  - {fileID: 1352123628}
+  - {fileID: 160618764}
+  - {fileID: 1197670802}
+  - {fileID: 1525054520}
+  rotationOffsetY: -30
+  rotationDuration: 0.8
 --- !u!1001 &779430408
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7114,12 +7123,14 @@ MonoBehaviour:
   kiraAudioSource: {fileID: 0}
   kiraClip: {fileID: 8300000, guid: f57609339f391674997ad4e2b2f20090, type: 3}
   delayBeforeSpeaking: 3
+  isLet: 0
   kiraAnimator: {fileID: 0}
   animationStateName: Pointing
   idleStateName: HumanoidIdle
   floatingTarget: {fileID: 0}
-  emissionTargets: []
-  isLet: 0
+  breathingEmissionTargets: []
+  rotationOffsetY: -30
+  rotationDuration: 0.8
 --- !u!114 &1288639684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8221,12 +8232,14 @@ MonoBehaviour:
   kiraAudioSource: {fileID: 1440545316}
   kiraClip: {fileID: 8300000, guid: f6137c38c2055804ca360b39d5e41583, type: 3}
   delayBeforeSpeaking: 5
+  isLet: 0
   kiraAnimator: {fileID: 1440545317}
   animationStateName: Pointing
   idleStateName: HumanoidIdle
   floatingTarget: {fileID: 0}
-  emissionTargets: []
-  isLet: 0
+  breathingEmissionTargets: []
+  rotationOffsetY: -30
+  rotationDuration: 0.8
 --- !u!82 &1440545316
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8361,13 +8374,15 @@ MonoBehaviour:
   doorController: {fileID: 1954593447}
   kiraAudioSource: {fileID: 1440545316}
   kiraClip: {fileID: 8300000, guid: b5f734d3af623814e85037209b8cd8a9, type: 3}
-  delayBeforeSpeaking: 17
+  delayBeforeSpeaking: 14
+  isLet: 0
   kiraAnimator: {fileID: 1440545317}
   animationStateName: Pointing
   idleStateName: HumanoidIdle
   floatingTarget: {fileID: 0}
-  emissionTargets: []
-  isLet: 0
+  breathingEmissionTargets: []
+  rotationOffsetY: -30
+  rotationDuration: 0.8
 --- !u!1 &1450667925 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1509892417323772905, guid: 47f392d29c514724e9419110abcbc0d2,
@@ -8420,22 +8435,22 @@ PrefabInstance:
     - target: {fileID: 3284863708774286695, guid: bda3290e8a6c899428df1495f3840b24,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9999999
       objectReference: {fileID: 0}
     - target: {fileID: 3284863708774286695, guid: bda3290e8a6c899428df1495f3840b24,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3284863708774286695, guid: bda3290e8a6c899428df1495f3840b24,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.0004882635
       objectReference: {fileID: 0}
     - target: {fileID: 3284863708774286695, guid: bda3290e8a6c899428df1495f3840b24,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3284863708774286695, guid: bda3290e8a6c899428df1495f3840b24,
         type: 3}
@@ -8445,7 +8460,7 @@ PrefabInstance:
     - target: {fileID: 3284863708774286695, guid: bda3290e8a6c899428df1495f3840b24,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 0.056
       objectReference: {fileID: 0}
     - target: {fileID: 3284863708774286695, guid: bda3290e8a6c899428df1495f3840b24,
         type: 3}
@@ -8837,6 +8852,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amplitude: 0.2
   frequency: -0.26
+--- !u!114 &1525054520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525054506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17000a3d58c88804cbd4b832d4eec41d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedMaterial: {fileID: 2100000, guid: 25b48d6a9c4572049b9a2a2b68f2f46f, type: 2}
+  emissionColor: {r: 1, g: 1, b: 1, a: 1}
+  fadeInDuration: 3
+  pulseMin: 0
+  pulseMax: 1
+  pulseSpeed: 2
+  isLet: 0
 --- !u!1 &1527972469 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bfaf3131d7d593342b91b8ac3631454c,
@@ -9097,10 +9131,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 77e2d4e30cf9e1f46b6b09c292bbc09a,
         type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 77e2d4e30cf9e1f46b6b09c292bbc09a,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: -6351568673437145225, guid: 21a89ab768221244f8f886d52555e5c8,
         type: 3}
+    - target: {fileID: -7511558181221131132, guid: 77e2d4e30cf9e1f46b6b09c292bbc09a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 25b48d6a9c4572049b9a2a2b68f2f46f, type: 2}
     - target: {fileID: 919132149155446097, guid: 77e2d4e30cf9e1f46b6b09c292bbc09a,
         type: 3}
       propertyPath: m_Name
@@ -9122,6 +9166,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1525054519}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 77e2d4e30cf9e1f46b6b09c292bbc09a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1525054520}
   m_SourcePrefab: {fileID: 100100000, guid: 77e2d4e30cf9e1f46b6b09c292bbc09a, type: 3}
 --- !u!1 &1581482334 stripped
 GameObject:
