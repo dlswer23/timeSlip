@@ -122,6 +122,52 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &44362755
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 44362757}
+  - component: {fileID: 44362756}
+  m_Layer: 0
+  m_Name: SceneController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &44362756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44362755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0962b2a60b5805d4ca1ba65e5bd1331b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneToLoad: GrandMotherHouseScene2
+  delayInSeconds: 35
+--- !u!4 &44362757
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44362755}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.4608803, y: 0.40103388, z: 0.29867083}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &96401419
 GameObject:
   m_ObjectHideFlags: 0
@@ -12820,7 +12866,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeMaterial: {fileID: 2100000, guid: af28ea0e93e3ce44496b77a65f66396a, type: 2}
   fadeDuration: 2.5
-  sceneToLoad: SewingMachineWorkScene
+  sceneToLoad: GrandMotherHouseScene2
   bgmSourceMain: {fileID: 0}
   bgmSourceDelayed: {fileID: 0}
   bgmFadeDuration: 2
@@ -13378,3 +13424,4 @@ SceneRoots:
   - {fileID: 114689671}
   - {fileID: 1877599973}
   - {fileID: 1609734746}
+  - {fileID: 44362757}
