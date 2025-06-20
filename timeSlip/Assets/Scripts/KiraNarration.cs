@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class KiraNarration : MonoBehaviour
@@ -11,12 +12,26 @@ public class KiraNarration : MonoBehaviour
     public Animator kiraAnimator;
 
     [Header("KiraNarration")]
-    public string animationStateName = "Pointing";       // 애니메이션 클립 이름
-    public string idleStateName = "HumanoidIdle";         // 복귀용 애니메이션 클립 이름
+    public string animationStateName = "Pointing";
+    public string idleStateName = "HumanoidIdle";
+
+    [Header("Floating Effect Target")]
+    public FloatingEffect floatingTarget;
+
+    [Header("Breathing Emission Targets")] // ✅ 여러 개 등록 가능
+    public List<SharedMaterialBreathingEmission> emissionTargets;
+
+    public bool isLet = false;
 
     void Start()
     {
         doorController.OnDoorFullyClosed += OnDoorClosed;
+    }
+
+    void OnDestroy()
+    {
+        if (doorController != null)
+            doorController.OnDoorFullyClosed -= OnDoorClosed;
     }
 
     void OnDoorClosed()
@@ -28,36 +43,40 @@ public class KiraNarration : MonoBehaviour
     {
         yield return new WaitForSeconds(delayBeforeSpeaking);
 
-        // 👉 1. 애니메이션 강제 실행 (파라미터 없이)
+        // 👉 애니메이션 실행
         if (kiraAnimator != null && !string.IsNullOrEmpty(animationStateName))
-        {
             kiraAnimator.Play(animationStateName);
-            Debug.Log($"🕹 애니메이션 '{animationStateName}' 실행");
-        }
 
-        // 👉 2. 오디오 재생
+        // 👉 오디오 재생
         if (kiraAudioSource != null && kiraClip != null)
         {
             kiraAudioSource.clip = kiraClip;
             kiraAudioSource.Play();
-            Debug.Log("🎤 Kira 오디오 재생됨");
         }
 
-        // 👉 3. 대사 끝나고 원래 상태로 돌아가기
         yield return new WaitForSeconds(kiraClip.length);
 
+        // 👉 애니메이션 복귀
         if (kiraAnimator != null && !string.IsNullOrEmpty(idleStateName))
-        {
             kiraAnimator.Play(idleStateName);
-            Debug.Log($"↩ 애니메이션 '{idleStateName}'으로 복귀");
-        }
-    }
 
-    void OnDestroy()
-    {
-        if (doorController != null)
+        // ✅ Emission 효과들 전체 실행
+        if (isLet && emissionTargets != null)
         {
-            doorController.OnDoorFullyClosed -= OnDoorClosed;
+            foreach (var target in emissionTargets)
+            {
+                if (target != null)
+                {
+                    target.isLet = true;
+                    Debug.Log($"✨ Emission 활성화: {target.name}");
+                }
+            }
+        }
+
+        // ✅ FloatingEffect도 같이 실행
+        if (isLet && floatingTarget != null)
+        {
+            floatingTarget.enabled = true;
         }
     }
 }

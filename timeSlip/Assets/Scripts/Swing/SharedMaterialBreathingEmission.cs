@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using System.Collections;
 
 public class SharedMaterialBreathingEmission : MonoBehaviour
@@ -6,34 +6,30 @@ public class SharedMaterialBreathingEmission : MonoBehaviour
     public Material sharedMaterial;
     public Color emissionColor = Color.white;
 
-    public float delay = 45f;
     public float fadeInDuration = 3f;
     public float pulseMin = 0f;
     public float pulseMax = 1f;
     public float pulseSpeed = 2f;
 
+    public bool isLet = false;  // ðŸ‘ˆ ì™¸ë¶€ì—ì„œ ì œì–´
+
     private bool emissionEnabled = false;
-    private float timer = 0f;
 
     void Start()
     {
-        // ÃÊ±â Emission ¿ÏÀüÈ÷ ²ô±â
         sharedMaterial.DisableKeyword("_EMISSION");
         sharedMaterial.SetColor("_EmissionColor", Color.black);
     }
 
     void Update()
     {
-        timer += Time.deltaTime;
-
-        if (!emissionEnabled && timer >= delay)
+        if (isLet && !emissionEnabled)
         {
             emissionEnabled = true;
             StartCoroutine(FadeInAndEnableBreathing());
         }
 
-        // ¼û½¬±â È¿°ú
-        if (emissionEnabled && timer >= delay + fadeInDuration)
+        if (emissionEnabled)
         {
             float pulse = Mathf.Lerp(pulseMin, pulseMax, (Mathf.Sin(Time.time * pulseSpeed) + 1f) / 2f);
             sharedMaterial.SetColor("_EmissionColor", emissionColor * pulse);
@@ -42,7 +38,6 @@ public class SharedMaterialBreathingEmission : MonoBehaviour
 
     IEnumerator FadeInAndEnableBreathing()
     {
-        // Emission È°¼ºÈ­ Å°¿öµå ÄÑ±â
         sharedMaterial.EnableKeyword("_EMISSION");
 
         float t = 0f;
@@ -54,7 +49,6 @@ public class SharedMaterialBreathingEmission : MonoBehaviour
             t += Time.deltaTime;
         }
 
-        // ÃÖÁ¾ ÃÖ¼Ò°ª º¸Á¤
         sharedMaterial.SetColor("_EmissionColor", emissionColor * pulseMin);
     }
 }

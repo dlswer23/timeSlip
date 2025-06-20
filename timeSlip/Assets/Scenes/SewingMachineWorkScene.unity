@@ -284,7 +284,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9e2db12dbce78eb4d96b27586c321e2b, type: 2}
+  - {fileID: 2100000, guid: c59f9a6c97d1144409049ca7ef6a5a54, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2103,11 +2103,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sharedMaterial: {fileID: 2100000, guid: c59f9a6c97d1144409049ca7ef6a5a54, type: 2}
   emissionColor: {r: 0.990566, g: 0.81768423, b: 0.9063845, a: 1}
-  delay: 45
   fadeInDuration: 3
   pulseMin: 0
   pulseMax: 1
   pulseSpeed: 2
+  isLet: 0
 --- !u!4 &160618765
 Transform:
   m_ObjectHideFlags: 0
@@ -4801,17 +4801,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: c534b849e2e027049abf110368e1f226,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.99999624
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c534b849e2e027049abf110368e1f226,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c534b849e2e027049abf110368e1f226,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.0027404518
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c534b849e2e027049abf110368e1f226,
         type: 3}
@@ -4826,7 +4826,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: c534b849e2e027049abf110368e1f226,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -0.314
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c534b849e2e027049abf110368e1f226,
         type: 3}
@@ -5328,6 +5328,13 @@ MonoBehaviour:
   kiraAnimator: {fileID: 662733806}
   animationStateName: Pointing
   idleStateName: HumanoidIdle
+  floatingTarget: {fileID: 1525054519}
+  emissionTargets:
+  - {fileID: 1582325670}
+  - {fileID: 1352123628}
+  - {fileID: 160618764}
+  - {fileID: 1197670802}
+  isLet: 1
 --- !u!114 &662733812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5347,6 +5354,9 @@ MonoBehaviour:
   kiraAnimator: {fileID: 662733806}
   animationStateName: Pointing
   idleStateName: HumanoidIdle
+  floatingTarget: {fileID: 0}
+  emissionTargets: []
+  isLet: 0
 --- !u!1001 &779430408
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6518,11 +6528,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sharedMaterial: {fileID: 2100000, guid: b5cc71eaa4548304aaaebb98e06ef9f5, type: 2}
   emissionColor: {r: 0.9716981, g: 0.96327245, b: 0.71960664, a: 1}
-  delay: 45
   fadeInDuration: 3
   pulseMin: 0
   pulseMax: 1
   pulseSpeed: 2
+  isLet: 0
 --- !u!4 &1197670803
 Transform:
   m_ObjectHideFlags: 0
@@ -7107,6 +7117,9 @@ MonoBehaviour:
   kiraAnimator: {fileID: 0}
   animationStateName: Pointing
   idleStateName: HumanoidIdle
+  floatingTarget: {fileID: 0}
+  emissionTargets: []
+  isLet: 0
 --- !u!114 &1288639684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7599,11 +7612,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sharedMaterial: {fileID: 2100000, guid: 011c18e5f55d7b64da2da4dc438adfa6, type: 2}
   emissionColor: {r: 0.7602202, g: 0.9339623, b: 0.7533375, a: 1}
-  delay: 45
   fadeInDuration: 3
   pulseMin: 0
   pulseMax: 1
   pulseSpeed: 2
+  isLet: 0
 --- !u!4 &1352123629
 Transform:
   m_ObjectHideFlags: 0
@@ -8211,6 +8224,9 @@ MonoBehaviour:
   kiraAnimator: {fileID: 1440545317}
   animationStateName: Pointing
   idleStateName: HumanoidIdle
+  floatingTarget: {fileID: 0}
+  emissionTargets: []
+  isLet: 0
 --- !u!82 &1440545316
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8349,6 +8365,9 @@ MonoBehaviour:
   kiraAnimator: {fileID: 1440545317}
   animationStateName: Pointing
   idleStateName: HumanoidIdle
+  floatingTarget: {fileID: 0}
+  emissionTargets: []
+  isLet: 0
 --- !u!1 &1450667925 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1509892417323772905, guid: 47f392d29c514724e9419110abcbc0d2,
@@ -8804,6 +8823,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1525054519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525054506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 016cd2dca1b9d4e44969d73e03f802c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitude: 0.2
+  frequency: -0.26
 --- !u!1 &1527972469 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bfaf3131d7d593342b91b8ac3631454c,
@@ -9085,6 +9118,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1525054515}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 77e2d4e30cf9e1f46b6b09c292bbc09a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1525054519}
   m_SourcePrefab: {fileID: 100100000, guid: 77e2d4e30cf9e1f46b6b09c292bbc09a, type: 3}
 --- !u!1 &1581482334 stripped
 GameObject:
@@ -9176,11 +9213,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sharedMaterial: {fileID: 2100000, guid: 9e2db12dbce78eb4d96b27586c321e2b, type: 2}
   emissionColor: {r: 0.6273585, g: 0.88707834, b: 1, a: 1}
-  delay: 45
   fadeInDuration: 3
   pulseMin: 0
   pulseMax: 1
   pulseSpeed: 2
+  isLet: 1
 --- !u!4 &1582325671
 Transform:
   m_ObjectHideFlags: 0
