@@ -5335,6 +5335,7 @@ MonoBehaviour:
   - {fileID: 160618764}
   - {fileID: 1352123628}
   - {fileID: 1582325670}
+  - {fileID: 1525054520}
   rotationOffsetY: -30
   rotationDuration: 0.8
 --- !u!114 &662733812
@@ -9143,6 +9144,11 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 77e2d4e30cf9e1f46b6b09c292bbc09a,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 25b48d6a9c4572049b9a2a2b68f2f46f, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 77e2d4e30cf9e1f46b6b09c292bbc09a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 2100000, guid: 25b48d6a9c4572049b9a2a2b68f2f46f, type: 2}
     - target: {fileID: 919132149155446097, guid: 77e2d4e30cf9e1f46b6b09c292bbc09a,
