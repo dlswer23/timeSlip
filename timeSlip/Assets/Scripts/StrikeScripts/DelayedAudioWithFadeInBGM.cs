@@ -1,14 +1,15 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class DelayedAudioWithFadeInBGM : MonoBehaviour
 {
-    public AudioSource whistleAudio;     // ÈÖ½½ ¼Ò¸®
-    public AudioSource bgmAudio;         // ¹è°æÀ½ (ÆäÀÌµåÀÎ)
-    public float fadeDuration = 2f;      // ÆäÀÌµåÀÎ¿¡ °É¸®´Â ½Ã°£ (ÃÊ)
+    public AudioSource whistleAudio;     // íœ˜ìŠ¬ ì‚¬ìš´ë“œ
+    public AudioSource bgmAudio;         // BGM (í˜ì´ë“œì¸)
+    public AudioSource voiceAudio;       // ğŸ™ï¸ ìŒì„± ì˜¤ë””ì˜¤ ì¶”ê°€!
+    public float fadeDuration = 2f;      // í˜ì´ë“œì¸ ì‹œê°„
 
     void Start()
     {
-        Invoke(nameof(PlayWhistle), 12f);  // 12ÃÊ µÚ ÈÖ½½ ½ÇÇà
+        Invoke(nameof(PlayWhistle), 12f); // 12ì´ˆ ë’¤ íœ˜ìŠ¬
     }
 
     void PlayWhistle()
@@ -18,17 +19,18 @@ public class DelayedAudioWithFadeInBGM : MonoBehaviour
             whistleAudio.Play();
             float whistleLength = whistleAudio.clip.length;
 
-            // ÈÖ½½ ³¡³­ µÚ 0.5ÃÊ ´ë±â ÈÄ BGM Àç»ı ½ÃÀÛ
-            Invoke(nameof(StartFadeInBGM), whistleLength + 0.5f);
+            // íœ˜ìŠ¬ ë + 0.5ì´ˆ ë’¤ì— BGM + ìŒì„± ì¬ìƒ
+            Invoke(nameof(StartFadeInBGMAndVoice), whistleLength + 0.5f);
         }
         else
         {
-            Debug.LogWarning("Whistle AudioSource°¡ ¼³Á¤µÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+            Debug.LogWarning("Whistle AudioSourceê°€ ì„¤ì •ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
         }
     }
 
-    void StartFadeInBGM()
+    void StartFadeInBGMAndVoice()
     {
+        // ğŸ§ BGM ì‹œì‘
         if (bgmAudio != null)
         {
             bgmAudio.volume = 0f;
@@ -37,7 +39,17 @@ public class DelayedAudioWithFadeInBGM : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("BGM AudioSource°¡ ¼³Á¤µÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+            Debug.LogWarning("BGM AudioSourceê°€ ì„¤ì •ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
+        }
+
+        // ğŸ™ï¸ ìŒì„± ì˜¤ë””ì˜¤ ì‹œì‘
+        if (voiceAudio != null)
+        {
+            voiceAudio.Play();
+        }
+        else
+        {
+            Debug.LogWarning("Voice AudioSourceê°€ ì„¤ì •ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -50,6 +62,6 @@ public class DelayedAudioWithFadeInBGM : MonoBehaviour
             bgmAudio.volume = Mathf.Lerp(0f, 1f, timer / fadeDuration);
             yield return null;
         }
-        bgmAudio.volume = 1f; // ÃÖÁ¾ÀûÀ¸·Î 1·Î °íÁ¤
+        bgmAudio.volume = 1f; // ìµœì¢… ë³¼ë¥¨ ê³ ì •
     }
 }
