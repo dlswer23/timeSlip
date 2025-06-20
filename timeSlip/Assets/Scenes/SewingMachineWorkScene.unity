@@ -4497,7 +4497,7 @@ MonoBehaviour:
   - pivot: {fileID: 499815075}
     openAngle: 120
   openSpeed: 1.5
-  doorOpenDuration: 20
+  doorOpenDuration: 15
   doorCloseSound: {fileID: 558276629}
 --- !u!4 &499815075
 Transform:
@@ -4561,9 +4561,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupPanel: {fileID: 844663099}
   typingText: {fileID: 1162836240}
-  fullText: "\uBE5B\uB098\uB294 \uBBF8\uC2F1 \uC18C\uD488\uB4E4\uC744 \n\uBC15\uC2A4
+  fullText: "\uBE5B\uB098\uB294 \uBBF8\uC2F1 \uC18C\uD488\uB4E4\uC744\n\uBC15\uC2A4
     \uC548\uC5D0 \uC62E\uACA8 \uB123\uC73C\uC138\uC694."
-  delay: 0.05
+  delay: 0.1
   typingSound: {fileID: 1436722802}
 --- !u!1001 &528113025
 PrefabInstance:
@@ -18153,7 +18153,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 8402ef9c5e382284086e2456172ca001,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.005
+      value: 2.149
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8402ef9c5e382284086e2456172ca001,
         type: 3}
@@ -18797,7 +18797,7 @@ MonoBehaviour:
   - pivot: {fileID: 1954593446}
     openAngle: -120
   openSpeed: 1
-  doorOpenDuration: 20
+  doorOpenDuration: 15
   doorCloseSound: {fileID: 558276629}
 --- !u!1001 &1965672067
 PrefabInstance:
