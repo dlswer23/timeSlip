@@ -5461,9 +5461,9 @@ MonoBehaviour:
   - {fileID: 160618764}
   - {fileID: 1352123628}
   - {fileID: 1582325670}
-  - {fileID: 72557287}
   rotationOffsetY: -30
   rotationDuration: 0.8
+  particleEffect: {fileID: 1784973222}
 --- !u!114 &662733812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5485,14 +5485,10 @@ MonoBehaviour:
   animationStateName: Pointing
   idleStateName: HumanoidIdle
   floatingTarget: {fileID: 1525054519}
-  breathingEmissionTargets:
-  - {fileID: 1582325670}
-  - {fileID: 1352123628}
-  - {fileID: 160618764}
-  - {fileID: 1197670802}
-  - {fileID: 0}
+  breathingEmissionTargets: []
   rotationOffsetY: -30
   rotationDuration: 0.8
+  particleEffect: {fileID: 0}
 --- !u!1001 &779430408
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7258,6 +7254,7 @@ MonoBehaviour:
   breathingEmissionTargets: []
   rotationOffsetY: -30
   rotationDuration: 0.8
+  particleEffect: {fileID: 0}
 --- !u!114 &1288639684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8367,6 +8364,7 @@ MonoBehaviour:
   breathingEmissionTargets: []
   rotationOffsetY: -30
   rotationDuration: 0.8
+  particleEffect: {fileID: 0}
 --- !u!82 &1440545316
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8510,6 +8508,7 @@ MonoBehaviour:
   breathingEmissionTargets: []
   rotationOffsetY: -30
   rotationDuration: 0.8
+  particleEffect: {fileID: 0}
 --- !u!1 &1450667925 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1509892417323772905, guid: 47f392d29c514724e9419110abcbc0d2,
@@ -11480,8 +11479,8 @@ Transform:
   m_GameObject: {fileID: 1784973219}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.073, z: 0}
-  m_LocalScale: {x: 0.32825, y: 0.14161874, z: 0.32825}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.32825, y: 0.41602406, z: 0.32825}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1525054510}
@@ -11750,7 +11749,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 0.59607846, a: 0.078431375}
+      maxColor: {r: 1, g: 1, b: 1, a: 0.078431375}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

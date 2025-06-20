@@ -27,6 +27,9 @@ public class KiraNarration : MonoBehaviour
     public float rotationOffsetY = -30f; // 말할 때 회전 각도
     public float rotationDuration = 0.8f;
 
+    [Header("Optional Particle Effect")]
+    public ParticleSystem particleEffect; // 👈 여기 연결
+
     private Quaternion originalRotation;
 
     void Start()
@@ -93,6 +96,8 @@ public class KiraNarration : MonoBehaviour
                     if (effect != null)
                         effect.isLet = true;
                 }
+                if (particleEffect != null)
+                    particleEffect.Play();
             }
         }
     }
