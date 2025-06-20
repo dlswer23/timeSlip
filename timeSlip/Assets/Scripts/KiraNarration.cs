@@ -24,11 +24,11 @@ public class KiraNarration : MonoBehaviour
     public SharedMaterialBreathingEmission[] breathingEmissionTargets;
 
     [Header("Rotation Settings")]
-    public float rotationOffsetY = -30f; // 말할 때 회전 각도
+    public float rotationOffsetY = -30f;
     public float rotationDuration = 0.8f;
 
     [Header("Optional Particle Effect")]
-    public ParticleSystem particleEffect; // 👈 여기 연결
+    public ParticleSystem particleEffect;
 
     private Quaternion originalRotation;
 
@@ -53,37 +53,36 @@ public class KiraNarration : MonoBehaviour
     {
         yield return new WaitForSeconds(delayBeforeSpeaking);
 
-        // 👉 원래 회전 저장
         originalRotation = transform.rotation;
-
-        // 👉 타겟 회전 계산
         float newY = transform.eulerAngles.y + rotationOffsetY;
         Quaternion targetRotation = Quaternion.Euler(transform.eulerAngles.x, newY, transform.eulerAngles.z);
 
-        // 👉 부드러운 회전
         yield return StartCoroutine(SmoothRotate(transform.rotation, targetRotation, rotationDuration));
 
-        // 🎞 애니메이션 실행
         if (kiraAnimator != null && !string.IsNullOrEmpty(animationStateName))
             kiraAnimator.Play(animationStateName);
 
-        // 🎤 오디오 재생
         if (kiraAudioSource != null && kiraClip != null)
         {
             kiraAudioSource.clip = kiraClip;
             kiraAudioSource.Play();
+
+            // 👉 이 시점에서 isLet = true
+            isLet = true;
+
+            // ✅ TypingEffect3 트리거
+            TypingEffect3 typing = FindObjectOfType<TypingEffect3>();
+            if (typing != null)
+                typing.StartTypingExternally();
         }
 
         yield return new WaitForSeconds(kiraClip.length);
 
-        // ↩ 원래 방향으로 회전 복귀
         yield return StartCoroutine(SmoothRotate(transform.rotation, originalRotation, rotationDuration));
 
-        // 😌 애니메이션 복귀
         if (kiraAnimator != null && !string.IsNullOrEmpty(idleStateName))
             kiraAnimator.Play(idleStateName);
 
-        // ✨ 외부 연계 효과 실행 (isLet 체크)
         if (isLet)
         {
             if (floatingTarget != null)
@@ -96,9 +95,10 @@ public class KiraNarration : MonoBehaviour
                     if (effect != null)
                         effect.isLet = true;
                 }
-                if (particleEffect != null)
-                    particleEffect.Play();
             }
+
+            if (particleEffect != null)
+                particleEffect.Play();
         }
     }
 
