@@ -1,16 +1,19 @@
-// FloatingEffect.cs
+ï»¿// FloatingEffect.cs
 using UnityEngine;
 
 public class FloatingEffect : MonoBehaviour
 {
-    public float amplitude = 0.1f;  // À§¾Æ·¡ ¿òÁ÷ÀÓ Å©±â
-    public float frequency = 1f;    // ¿òÁ÷ÀÓ ¼Óµµ
+    public float amplitude = 0.1f;  // ìœ„ì•„ë˜ ì›€ì§ì„ í¬ê¸°
+    public float frequency = 1f;    // ì›€ì§ì„ ì†ë„
 
     private Vector3 startPos;
 
     void Start()
     {
         startPos = transform.position;
+
+        // âœ… ì²˜ìŒì—” ë¹„í™œì„±í™”
+        enabled = false;
     }
 
     void Update()
