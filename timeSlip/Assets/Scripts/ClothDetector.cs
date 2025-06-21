@@ -1,25 +1,52 @@
-using System.Collections;
-using System.Collections.Generic;
+ï»¿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ClothDetector : MonoBehaviour
 {
-    public string clothTag = "Cloth";  // Cloth ¿ÀºêÁ§Æ®ÀÇ ÅÂ±× ÀÌ¸§
+    [Header("Cloth ì¡°ê±´")]
+    public string clothTag = "Cloth";
     public int clothCount = 0;
-    public int targetCount = 5;        // ¸ñÇ¥ °³¼ö
-    public string nextSceneName = "OfficeScene";  // ÀüÈ¯ÇÒ ¾À ÀÌ¸§
+    public int targetCount = 5;
+    public string nextSceneName = "OfficeScene";
+
+    [Header("ì‚¬ìš´ë“œ")]
+    public AudioSource audioSource;             // âœ… ê³µìš© AudioSource
+    public AudioClip clothEnterClip;            // Cloth ë“¤ì–´ì˜¬ ë•Œ ì¬ìƒ
+    public AudioClip clothCompleteClip;         // Cloth 5ê°œ ë„ë‹¬ ì‹œ ì¬ìƒ
+
+    private bool sceneLoadingStarted = false;
+    private bool hasPlayedCompleteSound = false; // âœ… ì¤‘ë³µ ë°©ì§€
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(clothTag))
         {
             clothCount++;
-            Debug.Log($"Cloth µé¾î¿È! ÇöÀç °³¼ö: {clothCount}");
+            Debug.Log($"ğŸ§º Cloth ë“¤ì–´ì˜´! í˜„ì¬ ê°œìˆ˜: {clothCount}");
 
-            if (clothCount >= targetCount)
+            // â–¶ï¸ ê°œë³„ Cloth ë“¤ì–´ì˜¬ ë•Œ ì†Œë¦¬
+            if (audioSource != null && clothEnterClip != null)
             {
-                LoadNextScene();  // ¾À ÀüÈ¯ ½ÇÇà
+                audioSource.PlayOneShot(clothEnterClip);
+            }
+
+            // âœ… Cloth 5ê°œ ë„ë‹¬ ì‹œ ì‚¬ìš´ë“œ ì¬ìƒ (1íšŒë§Œ)
+            if (clothCount >= targetCount && !hasPlayedCompleteSound)
+            {
+                hasPlayedCompleteSound = true;
+                if (audioSource != null && clothCompleteClip != null)
+                {
+                    audioSource.PlayOneShot(clothCompleteClip);
+                    Debug.Log("ğŸµ Cloth 5ê°œ ë„ë‹¬ ì‚¬ìš´ë“œ ì¬ìƒ!");
+                }
+            }
+
+            // âœ… ì”¬ ì „í™˜ ì˜ˆì•½ (í•œ ë²ˆë§Œ)
+            if (clothCount >= targetCount && !sceneLoadingStarted)
+            {
+                sceneLoadingStarted = true;
+                StartCoroutine(DelayedSceneLoad(2f));
             }
         }
     }
@@ -29,13 +56,14 @@ public class ClothDetector : MonoBehaviour
         if (other.CompareTag(clothTag))
         {
             clothCount--;
-            Debug.Log($"Cloth ³ª°¨! ÇöÀç °³¼ö: {clothCount}");
+            Debug.Log($"ğŸ‘• Cloth ë‚˜ê°! í˜„ì¬ ê°œìˆ˜: {clothCount}");
         }
     }
 
-    private void LoadNextScene()
+    private IEnumerator DelayedSceneLoad(float delay)
     {
-        Debug.Log("¸ñÇ¥ ¼ö·® ´Ş¼º! OfficeSceneÀ¸·Î ÀüÈ¯ÇÕ´Ï´Ù.");
+        Debug.Log($"ğŸ¯ Cloth ëª¨ë‘ ê°ì§€ë¨! {delay}ì´ˆ í›„ {nextSceneName}ë¡œ ì´ë™í•©ë‹ˆë‹¤...");
+        yield return new WaitForSeconds(delay);
         SceneManager.LoadScene(nextSceneName);
     }
 }
