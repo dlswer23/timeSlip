@@ -46,7 +46,7 @@ public class ClothDetector : MonoBehaviour
             if (clothCount >= targetCount && !sceneLoadingStarted)
             {
                 sceneLoadingStarted = true;
-                StartCoroutine(DelayedSceneLoad(5f));
+                StartCoroutine(DelayedSceneLoad(2f));
             }
         }
     }
