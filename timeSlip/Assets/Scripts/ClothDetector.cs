@@ -11,10 +11,12 @@ public class ClothDetector : MonoBehaviour
     public string nextSceneName = "OfficeScene";
 
     [Header("사운드")]
-    public AudioSource audioSource;         // ✅ 사운드 재생용 AudioSource
-    public AudioClip clothEnterClip;        // ✅ Cloth 들어올 때 효과음
+    public AudioSource audioSource;             // ✅ 공용 AudioSource
+    public AudioClip clothEnterClip;            // Cloth 들어올 때 재생
+    public AudioClip clothCompleteClip;         // Cloth 5개 도달 시 재생
 
-    private bool sceneLoadingStarted = false; // ✅ 중복 실행 방지용
+    private bool sceneLoadingStarted = false;
+    private bool hasPlayedCompleteSound = false; // ✅ 중복 방지
 
     private void OnTriggerEnter(Collider other)
     {
@@ -23,17 +25,28 @@ public class ClothDetector : MonoBehaviour
             clothCount++;
             Debug.Log($"🧺 Cloth 들어옴! 현재 개수: {clothCount}");
 
-            // ✅ 사운드 재생
+            // ▶️ 개별 Cloth 들어올 때 소리
             if (audioSource != null && clothEnterClip != null)
             {
                 audioSource.PlayOneShot(clothEnterClip);
             }
 
-            // ✅ 목표 도달 시 씬 전환 (딜레이 포함)
+            // ✅ Cloth 5개 도달 시 사운드 재생 (1회만)
+            if (clothCount >= targetCount && !hasPlayedCompleteSound)
+            {
+                hasPlayedCompleteSound = true;
+                if (audioSource != null && clothCompleteClip != null)
+                {
+                    audioSource.PlayOneShot(clothCompleteClip);
+                    Debug.Log("🎵 Cloth 5개 도달 사운드 재생!");
+                }
+            }
+
+            // ✅ 씬 전환 예약 (한 번만)
             if (clothCount >= targetCount && !sceneLoadingStarted)
             {
                 sceneLoadingStarted = true;
-                StartCoroutine(DelayedSceneLoad(5f)); // 5초 대기 후 전환
+                StartCoroutine(DelayedSceneLoad(2f));
             }
         }
     }
