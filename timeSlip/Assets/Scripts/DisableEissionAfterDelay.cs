@@ -6,7 +6,7 @@ public class DisableEmissionAfterDelay : MonoBehaviour
     public Renderer targetRenderer;             // MeshRenderer 연결
     public Color baseEmissionColor = Color.yellow; // 빛나는 색상
     public float intensity = 1f;                // 처음 밝기
-    public float delaySeconds = 10f;             // 몇 초 뒤 꺼지기 시작
+    public float delaySeconds = 16f;             // 몇 초 뒤 꺼지기 시작
     public float fadeDuration = 2f;             // 천천히 꺼지는 시간
 
     private Material instanceMat;
