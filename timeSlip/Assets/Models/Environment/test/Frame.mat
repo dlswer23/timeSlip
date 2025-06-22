@@ -115,7 +115,11 @@ Material:
     m_Colors:
     - _BaseColor: {r: 0.5330188, g: 0.77545756, b: 1, a: 1}
     - _Color: {r: 0.53301877, g: 0.7754575, b: 1, a: 1}
+<<<<<<< HEAD
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+=======
+    - _EmissionColor: {r: 0.25070778, g: 0.35449815, b: 0.3996244, a: 0.3996244}
+>>>>>>> feature/sejin
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &5452933701557051679
