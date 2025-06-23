@@ -1255,8 +1255,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c33200b155feab34dab18a2e7bdc7fad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neonMaterial: {fileID: 2100000, guid: c0f406148fbf55445b0f9e351ed6ed33, type: 2}
-  glowColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  neonMaterial: {fileID: 2100000, guid: b528f72e8ca8a2b418dc852c6c67cd2e, type: 2}
+  glowColor: {r: 1, g: 0.98039216, b: 0.7254902, a: 1}
   minIntensity: 0.5
   maxIntensity: 2
   pulseSpeed: 2
@@ -12510,7 +12510,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c0f406148fbf55445b0f9e351ed6ed33, type: 2}
+      objectReference: {fileID: 2100000, guid: b528f72e8ca8a2b418dc852c6c67cd2e, type: 2}
     - target: {fileID: -2987810412798568646, guid: 21a89ab768221244f8f886d52555e5c8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
