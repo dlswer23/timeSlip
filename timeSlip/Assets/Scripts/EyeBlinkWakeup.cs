@@ -1,21 +1,28 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using System.Collections;
 
 public class EyeBlinkWakeup : MonoBehaviour
 {
-    public Material eyeMat;               // EyeLidMat ¿¬°á
-    public float blinkDuration = 0.6f;    // °¨±â/¶ß±â ¼Óµµ
-    public float holdClosedTime = 0.2f;   // ´« °¨Àº »óÅÂ À¯Áö ½Ã°£
-    public float holdOpenTime = 0.3f;     // ´« ¶á »óÅÂ À¯Áö ½Ã°£ (±ôºı »çÀÌ)
-    public int blinkCount = 3;            // ±ôºı È½¼ö (2È¸)
+    public Material eyeMat;               // EyeLidMat ì—°ê²°
+    public float blinkDuration = 0.6f;    // ê°ê¸°/ëœ¨ê¸° ì†ë„
+    public float holdClosedTime = 0.2f;   // ëˆˆ ê°ì€ ìƒíƒœ ìœ ì§€ ì‹œê°„
+    public float holdOpenTime = 0.3f;     // ëˆˆ ëœ¬ ìƒíƒœ ìœ ì§€ ì‹œê°„ (ê¹œë¹¡ ì‚¬ì´)
+    public int blinkCount = 3;            // ê¹œë¹¡ íšŸìˆ˜
+    public float initialHoldTime = 6f;    // ğŸ”¥ ì²˜ìŒ ëˆˆ ê°ì€ ìƒíƒœ ìœ ì§€ ì‹œê°„
 
     void Start()
     {
-        // ½ÃÀÛ ½Ã ´« °¨Àº »óÅÂ·Î °íÁ¤
+        // ì‹œì‘ ì‹œ ëˆˆ ê°ì€ ìƒíƒœë¡œ ê³ ì •
         Color c = eyeMat.color;
         eyeMat.color = new Color(c.r, c.g, c.b, 1f);
 
-        // ±ú¾î³ª±â ·çÆ¾ ½ÃÀÛ
+        // ğŸ”¥ ê¹œë¹¡ì„ ë£¨í‹´ ì‹¤í–‰ ì „ 6ì´ˆ ëŒ€ê¸°
+        StartCoroutine(WaitThenStartBlink());
+    }
+
+    IEnumerator WaitThenStartBlink()
+    {
+        yield return new WaitForSeconds(initialHoldTime);
         StartCoroutine(BlinkWakeupRoutine());
     }
 
@@ -23,17 +30,18 @@ public class EyeBlinkWakeup : MonoBehaviour
     {
         for (int i = 0; i < blinkCount; i++)
         {
-            Debug.Log("Blink Started!"); // Ãß°¡
-            // ´« ¶ß±â
+            Debug.Log("Blink Started!");
+
+            // ëˆˆ ëœ¨ê¸°
             yield return StartCoroutine(FadeToAlpha(0f));
             yield return new WaitForSeconds(holdOpenTime);
 
-            // ´« °¨±â
+            // ëˆˆ ê°ê¸°
             yield return StartCoroutine(FadeToAlpha(1f));
             yield return new WaitForSeconds(holdClosedTime);
         }
 
-        // ¸¶Áö¸· ´« ¶ß±â (¿ÏÀüÈ÷ ±ú¾î³²)
+        // ë§ˆì§€ë§‰ ëˆˆ ëœ¨ê¸° (ì™„ì „íˆ ê¹¨ì–´ë‚¨)
         yield return StartCoroutine(FadeToAlpha(0f));
     }
 
