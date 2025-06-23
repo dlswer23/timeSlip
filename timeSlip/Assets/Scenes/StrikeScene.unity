@@ -615,7 +615,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &118259273
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1716,6 +1716,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 464380758}
   m_CullTransparentMesh: 0
+--- !u!1 &490386157
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 490386159}
+  - component: {fileID: 490386158}
+  m_Layer: 0
+  m_Name: VRWhite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &490386158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490386157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b09548c7f24fed44b97f76f214c3a14f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeMaterial: {fileID: 2100000, guid: af28ea0e93e3ce44496b77a65f66396a, type: 2}
+  fadeDuration: 2.5
+  sceneToLoad: GrandMotherHouseScene2
+  bgmSourceMain: {fileID: 1877599972}
+  bgmFadeDuration: 2
+  autoTransitionDelay: 38
+--- !u!4 &490386159
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490386157}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.1767756, y: 0.401318, z: 0.89170617}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &527385228 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8704025361027543927, guid: 8061b7420a5d4dc4fbe3d8599f426b49,
@@ -14011,6 +14061,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: F_Engineer_with_Helmet
       objectReference: {fileID: 0}
+    - target: {fileID: 7459047688168771582, guid: 2836be2b0d203144da71df8c26c10efb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14911,3 +14966,4 @@ SceneRoots:
   - {fileID: 1191410107}
   - {fileID: 1085121955}
   - {fileID: 1712204995}
+  - {fileID: 490386159}
