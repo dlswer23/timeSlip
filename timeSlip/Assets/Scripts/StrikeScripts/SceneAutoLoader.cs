@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class SceneAutoLoader : MonoBehaviour
 {
     public string sceneToLoad = "GrandMotherHouseScene2";
-    public float delayInSeconds = 35f;
+    public float delayInSeconds = 40f;
 
     void Start()
     {
