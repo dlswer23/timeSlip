@@ -36,7 +36,7 @@ ModelImporter:
       name: Fist Pump
       takeName: mixamo.com
       internalID: -203655887218126122
-      firstFrame: 0
+      firstFrame: 29
       lastFrame: 29
       wrapMode: 0
       orientationOffsetY: 0
@@ -528,13 +528,13 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: Kira@Fist Pump(Clone)
+    - name: StrikePump(Clone)
       parentName: 
       position: {x: -0.028165486, y: 0.0060691237, z: 0.20894018}
       rotation: {x: 0.10707035, y: 0.029379556, z: -0.0076553933, w: 0.9937878}
       scale: {x: 1, y: 1, z: 1}
     - name: Pelvis
-      parentName: Kira@Fist Pump(Clone)
+      parentName: StrikePump(Clone)
       position: {x: 0.03265109, y: 0.80697316, z: -0.43338418}
       rotation: {x: 5.2737764e-17, y: 0.9914861, z: 0.13021305, w: 6.868427e-17}
       scale: {x: 1, y: 1, z: 1}

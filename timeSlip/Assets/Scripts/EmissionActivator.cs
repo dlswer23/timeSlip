@@ -1,25 +1,17 @@
-using System.Collections;
 using UnityEngine;
 
-public class EmissionActivator : MonoBehaviour
+public class AnimationStopper : MonoBehaviour
 {
-    public Material targetMaterial;
-    public Color emissionColor = Color.white;
-    public float delaySeconds = 30f;
+    public Animator animator;
+    public float stopTime = 14f;
 
     void Start()
     {
-        StartCoroutine(EnableEmissionAfterDelay());
+        Invoke("StopAnimation", stopTime);
     }
 
-    IEnumerator EnableEmissionAfterDelay()
+    void StopAnimation()
     {
-        yield return new WaitForSeconds(delaySeconds);
-
-        if (targetMaterial != null)
-        {
-            targetMaterial.EnableKeyword("_EMISSION");
-            targetMaterial.SetColor("_EmissionColor", emissionColor);
-        }
+        animator.enabled = false;
     }
 }
