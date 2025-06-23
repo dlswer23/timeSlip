@@ -865,6 +865,69 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.1, y: 3.372971, z: 6.828741}
   m_Center: {x: -3.55, y: 1.686485, z: 0.3501855}
+--- !u!65 &350983006
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350982996}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.15, y: 3.372971, z: 0.06}
+  m_Center: {x: -0.03, y: 1.686485, z: 3.75}
+--- !u!65 &350983007
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350982996}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.15, y: 3.372971, z: 0.06}
+  m_Center: {x: -0.03, y: 1.686485, z: -3.03}
+--- !u!65 &350983008
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350982996}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.1, y: 3.372971, z: 6.828741}
+  m_Center: {x: 3.56, y: 1.686485, z: 0.3501855}
 --- !u!1 &396901000
 GameObject:
   m_ObjectHideFlags: 0
@@ -12683,6 +12746,18 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 350983004}
+    - targetCorrespondingSourceObject: {fileID: -4338558033935260671, guid: f1bb2350ba913f44a8ec810d01d4c9e6,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 350983008}
+    - targetCorrespondingSourceObject: {fileID: -4338558033935260671, guid: f1bb2350ba913f44a8ec810d01d4c9e6,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 350983007}
+    - targetCorrespondingSourceObject: {fileID: -4338558033935260671, guid: f1bb2350ba913f44a8ec810d01d4c9e6,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 350983006}
     - targetCorrespondingSourceObject: {fileID: 7242944475213164239, guid: f1bb2350ba913f44a8ec810d01d4c9e6,
         type: 3}
       insertIndex: -1
